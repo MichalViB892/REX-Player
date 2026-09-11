@@ -58,10 +58,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import xyz.mpv.rex.R
 import xyz.mpv.rex.domain.media.model.Video
 import xyz.mpv.rex.utils.media.MediaFormatter
 import java.io.File
@@ -239,7 +241,7 @@ fun WebShareSheet(
         horizontalAlignment = Alignment.Start,
       ) {
         Text(
-          text = "Web Share",
+          text = stringResource(R.string.webshare_title),
           style = MaterialTheme.typography.titleLarge,
           fontWeight = FontWeight.Bold,
           color = MaterialTheme.colorScheme.onSurface,
@@ -302,13 +304,13 @@ fun WebShareSheet(
               )
               Column {
                 Text(
-                  text = "Enable Notifications",
+                  text = stringResource(R.string.webshare_enable_notifications_title),
                   style = MaterialTheme.typography.bodyMedium,
                   fontWeight = FontWeight.SemiBold,
                   color = MaterialTheme.colorScheme.onSurface,
                 )
                 Text(
-                  text = "Keep sharing in background & reopen anytime",
+                  text = stringResource(R.string.webshare_enable_notifications_summary),
                   style = MaterialTheme.typography.bodySmall,
                   color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -323,7 +325,7 @@ fun WebShareSheet(
               contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp),
             ) {
               Text(
-                text = "Allow",
+                text = stringResource(R.string.webshare_allow),
                 style = MaterialTheme.typography.labelMedium,
                 fontWeight = FontWeight.Bold,
               )
@@ -360,13 +362,13 @@ fun WebShareSheet(
             )
             Column {
               Text(
-                text = "Require Security Token",
+                text = stringResource(R.string.webshare_require_token_title),
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onSurface,
               )
               Text(
-                text = if (shareState.isTokenEnabled) "Requires ?t= token to view files" else "Open access (fast & easy)",
+                text = if (shareState.isTokenEnabled) stringResource(R.string.webshare_token_enabled_summary) else stringResource(R.string.webshare_token_disabled_summary),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
               )
@@ -473,7 +475,7 @@ fun WebShareSheet(
                 val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 clipboard.setPrimaryClip(ClipData.newPlainText("Web Share Link", url))
                 copied = true
-                Toast.makeText(context, "Link copied to clipboard", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.webshare_link_copied), Toast.LENGTH_SHORT).show()
               },
               modifier = Modifier.size(32.dp),
             ) {
@@ -502,7 +504,7 @@ fun WebShareSheet(
             modifier = Modifier.size(16.dp),
           )
           Text(
-            text = "Turn on Hotspot or connect to Wi-Fi to share",
+            text = stringResource(R.string.webshare_no_network_hint),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.error,
           )
@@ -537,7 +539,7 @@ fun WebShareSheet(
             }
           }
           Text(
-            text = "Connect receiving phone to this Hotspot or Wi-Fi",
+            text = stringResource(R.string.webshare_step1_instruction),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
           )
@@ -562,7 +564,7 @@ fun WebShareSheet(
             }
           }
           Text(
-            text = "Scan QR code or type URL in any browser",
+            text = stringResource(R.string.webshare_step2_instruction),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
           )
@@ -585,7 +587,7 @@ fun WebShareSheet(
         modifier = Modifier.fillMaxWidth().height(44.dp),
       ) {
         Text(
-          text = "Stop Sharing",
+          text = stringResource(R.string.webshare_stop_sharing),
           fontWeight = FontWeight.SemiBold,
           fontSize = 14.sp,
         )
