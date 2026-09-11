@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import xyz.mpv.rex.R
 import xyz.mpv.rex.ui.theme.MpvexTheme
 
 /**
@@ -50,7 +51,7 @@ class WebShareActivity : ComponentActivity() {
     val isRunning = WebShareManager.state.value.isRunning
 
     if (incomingUris.isEmpty() && !isRunning) {
-      Toast.makeText(this, "No active Web Share session", Toast.LENGTH_SHORT).show()
+      Toast.makeText(this, getString(R.string.webshare_no_active_session), Toast.LENGTH_SHORT).show()
       finish()
       return
     }
